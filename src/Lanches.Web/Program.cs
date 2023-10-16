@@ -7,6 +7,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddAppDbContextConfiguration(builder.Configuration);
 
+builder.Services.AddDependencyInjectionConfiguration();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

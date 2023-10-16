@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 -
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lanches.Infra.Data", "src\Lanches.Infra.Data\Lanches.Infra.Data.csproj", "{7D7963D8-2469-4C4A-A588-710D5B6BE4B8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lanches.Infra.CrossCutting", "src\Lanches.Infra.CrossCutting\Lanches.Infra.CrossCutting.csproj", "{EEDEA0E6-F957-4973-8E25-3B74D05039B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lanches.Infra.CrossCutting.IoC", "src\Lanches.Infra.CrossCutting\Lanches.Infra.CrossCutting.IoC.csproj", "{EEDEA0E6-F957-4973-8E25-3B74D05039B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
