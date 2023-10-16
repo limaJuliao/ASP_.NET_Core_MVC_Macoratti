@@ -11,19 +11,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{D5470EEB-10FB-479E-8683-46DB38261ED3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lanches.Web", "src\Lanches.Web\Lanches.Web.csproj", "{65E9C024-6C53-4A36-9187-3559CA4D4CC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lanches.Web", "src\Lanches.Web\Lanches.Web.csproj", "{65E9C024-6C53-4A36-9187-3559CA4D4CC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lanches.Application", "src\Lanches.Application\Lanches.Application.csproj", "{37C701FB-19C8-47CA-A94A-B0767CEF3DFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lanches.Application", "src\Lanches.Application\Lanches.Application.csproj", "{37C701FB-19C8-47CA-A94A-B0767CEF3DFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lanches.Domain", "src\Lanches.Domain\Lanches.Domain.csproj", "{064161EC-707E-4ADF-87C4-53DFFE734DFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lanches.Domain", "src\Lanches.Domain\Lanches.Domain.csproj", "{064161EC-707E-4ADF-87C4-53DFFE734DFD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{F2A0AEFF-384D-4EA6-840A-ECD76BDEC69B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{EC0AE63C-6E32-4BBD-9C0D-7D6A62A0CB0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lanches.Infra.Data", "src\Lanches.Infra.Data\Lanches.Infra.Data.csproj", "{7D7963D8-2469-4C4A-A588-710D5B6BE4B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lanches.Infra.Data", "src\Lanches.Infra.Data\Lanches.Infra.Data.csproj", "{7D7963D8-2469-4C4A-A588-710D5B6BE4B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lanches.Infra.CrossCutting", "src\Lanches.Infra.CrossCutting\Lanches.Infra.CrossCutting.csproj", "{EEDEA0E6-F957-4973-8E25-3B74D05039B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lanches.Infra.CrossCutting", "src\Lanches.Infra.CrossCutting\Lanches.Infra.CrossCutting.csproj", "{EEDEA0E6-F957-4973-8E25-3B74D05039B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
