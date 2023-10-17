@@ -10,4 +10,8 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Lanches.Infra.Data\Lanches.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>
