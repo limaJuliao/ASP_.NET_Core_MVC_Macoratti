@@ -1,7 +1,7 @@
 ﻿using Lanches.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Lanches.Web.Configurations;
+namespace Lanches.Web.Controllers;
 
 public class LancheController : Controller
 {

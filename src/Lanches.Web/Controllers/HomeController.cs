@@ -9,6 +9,7 @@ namespace Lanches.Web.Controllers
 
         public IActionResult Index()
         {
+            TempData.Add("Nome", "Julio Lima");
             return View();
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
