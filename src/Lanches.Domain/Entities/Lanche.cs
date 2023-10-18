@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Lanches.Domain.Entities
+﻿namespace Lanches.Domain.Entities
 {
     public class Lanche : BaseEntity
     {

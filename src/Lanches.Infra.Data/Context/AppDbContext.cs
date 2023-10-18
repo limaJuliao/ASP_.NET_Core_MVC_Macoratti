@@ -9,6 +9,7 @@ public class AppDbContext : DbContext
 
     public DbSet<Categoria> Categorias { get; set; }
     public DbSet<Lanche> Lanches { get; set; }
+    public DbSet<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
