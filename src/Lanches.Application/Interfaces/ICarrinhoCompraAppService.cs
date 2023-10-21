@@ -10,5 +10,4 @@ public interface ICarrinhoCompraAppService
     IEnumerable<CarrinhoCompraItem> ObterItensDoCarrinhoDeCompra(CarrinhoCompra carrinhoCompra);
     void LimparCarrinho(CarrinhoCompra carrinhoCompra);
     decimal ObterValorTotalDoCarrinho(CarrinhoCompra carrinhoCompra);
-
 }

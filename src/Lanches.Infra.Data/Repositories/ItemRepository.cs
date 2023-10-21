@@ -14,7 +14,7 @@ public class ItemRepository : IItemRepository
     }
     public IEnumerable<Item> Lanches => _context.Lanches.Include(x => x.Categoria);
 
-    public IEnumerable<Item> LanchesPreferidos => _context.Lanches
+    public IEnumerable<Item> ItensPreferidos => _context.Lanches
         .Where(l => l.IsLanchePreferido)
         .Include(c=>c.Categoria);
 

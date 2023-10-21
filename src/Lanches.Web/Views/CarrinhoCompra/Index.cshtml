@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
 
-        <img src="~/images//Full-Cart-icon.png" />
+        @*<img src="~/images//Full-Cart-icon.png" />*@
 
         <div>
             <h4>Seu ccarrinho de comprar: </h4>
@@ -53,7 +53,7 @@
         <div class="text-right">
             <div class="btn-group">
                 <a asp-controller="Pedido" asp-action="Chechout" class="btn btn-success">Encerrar Pedido</a>
-                <a asp-controller="Lanche" asp-action="@(nameof(LancheController.List))" class="btn btn-primary">
+                <a asp-controller="Lanche" asp-action="@(nameof(ItemController.List))" class="btn btn-primary">
                     Continuar Comprando
                 </a>
             </div>

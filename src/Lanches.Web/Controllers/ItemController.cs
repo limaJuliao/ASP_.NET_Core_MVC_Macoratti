@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lanches.Web.Controllers;
 
-public class LancheController : Controller
+public class ItemController : Controller
 {
     private readonly IItemRepository _lancheRepository;
-    public LancheController(IItemRepository lancheRepository)
+    public ItemController(IItemRepository lancheRepository)
     {
         _lancheRepository = lancheRepository;
     }
