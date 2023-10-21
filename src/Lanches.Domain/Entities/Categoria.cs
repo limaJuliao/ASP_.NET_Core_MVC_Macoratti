@@ -2,9 +2,10 @@
 {
     public class Categoria : BaseEntity
     {
-        public string Nome { get; set; }
-        public string Descricao { get; set; }
+        private Categoria() { }
+        public string Nome { get; private set; }
+        public string Descricao { get; private set; }
 
-        public List<Lanche> Lanches { get; set; }
+        public List<Item> Lanches { get; private set; }
     }
 }

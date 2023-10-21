@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Lanches.Application\Lanches.Application.csproj" />
     <ProjectReference Include="..\Lanches.Infra.Data\Lanches.Infra.Data.csproj" />
   </ItemGroup>
 

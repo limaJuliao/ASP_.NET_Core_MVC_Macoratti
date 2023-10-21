@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Lanches.Infra.Data.Mappings;
 
-public class LancheMap : IEntityTypeConfiguration<Lanche>
+public class LancheMap : IEntityTypeConfiguration<Item>
 {
-    public void Configure(EntityTypeBuilder<Lanche> builder)
+    public void Configure(EntityTypeBuilder<Item> builder)
     {
         builder.Property(x => x.Id)
             .HasColumnName("LancheId");

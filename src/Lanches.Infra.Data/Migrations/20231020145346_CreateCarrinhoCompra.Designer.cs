@@ -88,7 +88,7 @@ namespace Lanches.Infra.Data.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("Lanches.Domain.Entities.Lanche", b =>
+            modelBuilder.Entity("Lanches.Domain.Entities.Item", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -147,7 +147,7 @@ namespace Lanches.Infra.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Lanches.Domain.Entities.Lanche", "Lanche")
+                    b.HasOne("Lanches.Domain.Entities.Item", "Item")
                         .WithMany()
                         .HasForeignKey("LancheId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -155,10 +155,10 @@ namespace Lanches.Infra.Data.Migrations
 
                     b.Navigation("CarrinhoCompra");
 
-                    b.Navigation("Lanche");
+                    b.Navigation("Item");
                 });
 
-            modelBuilder.Entity("Lanches.Domain.Entities.Lanche", b =>
+            modelBuilder.Entity("Lanches.Domain.Entities.Item", b =>
                 {
                     b.HasOne("Lanches.Domain.Entities.Categoria", "Categoria")
                         .WithMany("Lanches")

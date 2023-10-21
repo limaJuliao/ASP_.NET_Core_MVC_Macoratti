@@ -11,10 +11,10 @@ namespace Lanches.Infra.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.Sql(@"INSERT INTO Categorias(Nome, Descricao)
-                                    VALUES('Normal', 'Lanche feito com ingredientes normais')");
+                                    VALUES('Normal', 'Item feito com ingredientes normais')");
 
             migrationBuilder.Sql(@"INSERT INTO Categorias(Nome, Descricao)
-                                    VALUES('Natural', 'Lanche feito com ingredientes integrais e naturais')");
+                                    VALUES('Natural', 'Item feito com ingredientes integrais e naturais')");
         }
 
         /// <inheritdoc />

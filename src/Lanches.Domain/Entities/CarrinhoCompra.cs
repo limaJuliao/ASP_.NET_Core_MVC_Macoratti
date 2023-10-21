@@ -2,6 +2,18 @@
 
 public class CarrinhoCompra : BaseEntity
 {
-    public string Id { get; set; }
-    public List<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
+    public string Id { get; private set; }
+    public List<CarrinhoCompraItem> CarrinhoCompraItens { get; private set; }
+
+    private CarrinhoCompra() { }
+    public CarrinhoCompra(string id)
+    {
+        Id = id;
+        CarrinhoCompraItens = new(); //Todo Rever esta instanciação da lista no contrutor
+    }
+
+    public decimal PrecoTotal()
+    {
+        return CarrinhoCompraItens.Select(i => i.Item.Preco * i.Quantidade).Sum();
+    }
 }

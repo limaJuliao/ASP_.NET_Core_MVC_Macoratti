@@ -1,4 +1,6 @@
-﻿using Lanches.Domain.Interfaces;
+﻿using Lanches.Application.Interfaces;
+using Lanches.Application.Services;
+using Lanches.Domain.Interfaces;
 using Lanches.Infra.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,7 +10,11 @@ public static class DependencyContainer
 {
     public static void RegisterServices(IServiceCollection services)
     {
+        services.AddScoped<ICarrinhoCompraAppService, CarrinhoCompraAppService>();
+
         services.AddScoped<ICategoriaRepository, CategoriaRepository>();
-        services.AddScoped<ILancheRepository, LancheRepository>();
+        services.AddScoped<IItemRepository, ItemRepository>();
+        services.AddScoped<ICarrinhoCompraRepository, CarrinhoCompraRepository>();
+        services.AddScoped<ICarrinhoCompraItemRepository, CarrinhoCompraItemRepository>();
     }
 }

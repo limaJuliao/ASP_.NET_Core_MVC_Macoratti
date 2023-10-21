@@ -48,7 +48,7 @@ namespace Lanches.Infra.Data.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("Lanches.Domain.Entities.Lanche", b =>
+            modelBuilder.Entity("Lanches.Domain.Entities.Item", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -99,7 +99,7 @@ namespace Lanches.Infra.Data.Migrations
                     b.ToTable("Lanches");
                 });
 
-            modelBuilder.Entity("Lanches.Domain.Entities.Lanche", b =>
+            modelBuilder.Entity("Lanches.Domain.Entities.Item", b =>
                 {
                     b.HasOne("Lanches.Domain.Entities.Categoria", "Categoria")
                         .WithMany("Lanches")
