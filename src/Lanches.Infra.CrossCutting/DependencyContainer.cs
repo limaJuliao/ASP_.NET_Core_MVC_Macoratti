@@ -11,6 +11,7 @@ public static class DependencyContainer
     public static void RegisterServices(IServiceCollection services)
     {
         services.AddScoped<ICarrinhoCompraAppService, CarrinhoCompraAppService>();
+        services.AddScoped<ICategoriaAppService, CategoriaAppService>();
 
         services.AddScoped<ICategoriaRepository, CategoriaRepository>();
         services.AddScoped<IItemRepository, ItemRepository>();
