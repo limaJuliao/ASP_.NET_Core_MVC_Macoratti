@@ -25,7 +25,7 @@ namespace Lanches.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Lanches",
+                name: "Itens",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -53,7 +53,7 @@ namespace Lanches.Infra.Data.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Lanches_CategoriaId",
-                table: "Lanches",
+                table: "Itens",
                 column: "CategoriaId");
         }
 
@@ -61,7 +61,7 @@ namespace Lanches.Infra.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Lanches");
+                name: "Itens");
 
             migrationBuilder.DropTable(
                 name: "Categorias");

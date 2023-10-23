@@ -12,7 +12,7 @@ namespace Lanches.Infra.Data.Migrations
         {
             migrationBuilder.AlterColumn<string>(
                 name: "ImagemUrl",
-                table: "Lanches",
+                table: "Itens",
                 type: "nvarchar(200)",
                 maxLength: 200,
                 nullable: true,
@@ -22,7 +22,7 @@ namespace Lanches.Infra.Data.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "ImagemThumbnailUrl",
-                table: "Lanches",
+                table: "Itens",
                 type: "nvarchar(200)",
                 maxLength: 200,
                 nullable: true,
@@ -36,7 +36,7 @@ namespace Lanches.Infra.Data.Migrations
         {
             migrationBuilder.AlterColumn<string>(
                 name: "ImagemUrl",
-                table: "Lanches",
+                table: "Itens",
                 type: "nvarchar(200)",
                 maxLength: 200,
                 nullable: false,
@@ -48,7 +48,7 @@ namespace Lanches.Infra.Data.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "ImagemThumbnailUrl",
-                table: "Lanches",
+                table: "Itens",
                 type: "nvarchar(200)",
                 maxLength: 200,
                 nullable: false,

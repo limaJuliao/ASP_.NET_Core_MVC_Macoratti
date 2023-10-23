@@ -12,7 +12,7 @@ public class ItemRepository : IItemRepository
     {
         _context = context;
     }
-    public IEnumerable<Item> Lanches => _context.Lanches.Include(x => x.Categoria);
+    public IEnumerable<Item> Itens => _context.Lanches.Include(x => x.Categoria);
 
     public IEnumerable<Item> ItensPreferidos => _context.Lanches
         .Where(l => l.IsLanchePreferido)

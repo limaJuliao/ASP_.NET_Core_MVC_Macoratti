@@ -26,7 +26,7 @@ namespace Lanches.Infra.Data.Migrations
                     table.ForeignKey(
                         name: "FK_CarrinhoCompraItens_Lanches_LancheId",
                         column: x => x.LancheId,
-                        principalTable: "Lanches",
+                        principalTable: "Itens",
                         principalColumn: "LancheId",
                         onDelete: ReferentialAction.Cascade);
                 });

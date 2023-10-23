@@ -1,4 +1,6 @@
-﻿namespace Lanches.Domain.Entities;
+﻿using Lanches.Domain.Interfaces;
+
+namespace Lanches.Domain.Entities;
 
 public class CarrinhoCompra : BaseEntity
 {
@@ -15,5 +17,10 @@ public class CarrinhoCompra : BaseEntity
     public decimal PrecoTotal()
     {
         return CarrinhoCompraItens.Select(i => i.Item.Preco * i.Quantidade).Sum();
+    }
+
+    public static CarrinhoCompra ObterCarrinhoCompra()
+    {
+        return new CarrinhoCompra(Guid.NewGuid().ToString());
     }
 }

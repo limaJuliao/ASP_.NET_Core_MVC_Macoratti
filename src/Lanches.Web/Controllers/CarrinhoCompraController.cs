@@ -25,9 +25,11 @@ namespace Lanches.Web.Controllers
             var session = _httpContextAccessor.HttpContext?.Session;
 
             var carrinhoCompraId = session.GetString("CarrinhoCompraId");
-            var _carrinhoCompra = _carrinhoCompraAppService.ObterCarrinhoCompra(carrinhoCompraId);
+            var carrinhoCompra = _carrinhoCompraAppService.ObterCarrinhoCompra(carrinhoCompraId);
 
-            return View(new CarrinhoCompraViewModel() { CarrinhoCompra = _carrinhoCompra });
+            session.SetString("CarrinhoCompraId", carrinhoCompra.Id);
+
+            return View(new CarrinhoCompraViewModel() { CarrinhoCompra = carrinhoCompra });
         }
 
         public IActionResult AdicionarItemNoCarrinhoCompra(int lancheId)

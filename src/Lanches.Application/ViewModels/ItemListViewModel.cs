@@ -2,9 +2,9 @@
 
 namespace Lanches.Application.ViewModels;
 
-public class LancheListViewModel
+public class ItemListViewModel
 {
-    public IEnumerable<Item> Lanches { get; set; }
+    public IEnumerable<Item> Itens { get; set; }
     public string CategoriaAtual { get; set; }
 
 }

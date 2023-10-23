@@ -19,7 +19,10 @@ public class CarrinhoCompraAppService : ICarrinhoCompraAppService
 
     public CarrinhoCompra ObterCarrinhoCompra(string id)
     {
-        return _carrinhoCompraRepository.GetById(id) ?? new CarrinhoCompra(Guid.NewGuid().ToString());
+        if (string.IsNullOrWhiteSpace(id))
+            return CarrinhoCompra.ObterCarrinhoCompra();
+
+        return _carrinhoCompraRepository.GetById(id) ?? CarrinhoCompra.ObterCarrinhoCompra();
     }
 
     public void AdicionarAoCarrinhoCompra(CarrinhoCompra carrinhoCompra, int itemId)

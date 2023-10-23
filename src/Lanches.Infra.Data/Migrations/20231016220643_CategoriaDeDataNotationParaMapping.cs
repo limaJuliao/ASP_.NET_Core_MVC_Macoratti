@@ -12,7 +12,7 @@ namespace Lanches.Infra.Data.Migrations
         {
             migrationBuilder.RenameColumn(
                 name: "Id",
-                table: "Lanches",
+                table: "Itens",
                 newName: "LancheId");
         }
 
@@ -21,7 +21,7 @@ namespace Lanches.Infra.Data.Migrations
         {
             migrationBuilder.RenameColumn(
                 name: "LancheId",
-                table: "Lanches",
+                table: "Itens",
                 newName: "Id");
         }
     }
