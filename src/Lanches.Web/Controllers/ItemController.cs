@@ -12,6 +12,7 @@ public class ItemController : Controller
     {
         _itemRepository = itemRepository;
     }
+
     public IActionResult List(string categoria)
     {
         IEnumerable<Item> itens;
@@ -24,18 +25,9 @@ public class ItemController : Controller
         }
         else
         {
-            if (string.Equals("Normal", categoria, StringComparison.OrdinalIgnoreCase))
-            {
-                itens = _itemRepository.Itens
-                    .Where(x => x.Categoria.Nome.Equals("Normal"))
-                    .OrderBy(x => x.Nome);
-            }
-            else
-            {
-                itens = _itemRepository.Itens
-                    .Where(x => x.Categoria.Nome.Equals("Natural"))
-                    .OrderBy(x => x.Nome);
-            }
+            itens = _itemRepository.Itens
+                .Where(x => x.Categoria.Nome.Equals(categoria))
+                .OrderBy(x => x.Nome);
 
             categoriaAtual = categoria;
         }
