@@ -1,4 +1,5 @@
-﻿using Lanches.Infra.CrossCutting.IoC;
+﻿using Lanches.Domain.Entities;
+using Lanches.Infra.CrossCutting.IoC;
 
 namespace Lanches.Web.Configurations;
 

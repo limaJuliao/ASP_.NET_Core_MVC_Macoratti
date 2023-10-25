@@ -6,47 +6,28 @@ namespace Lanches.Application.Services;
 
 public class CarrinhoCompraAppService : ICarrinhoCompraAppService
 {
-    private readonly ICarrinhoCompraRepository _carrinhoCompraRepository;
     private readonly ICarrinhoCompraItemRepository _carrinhoCompraItemRepository;
     private readonly IItemRepository _itemRepository;
 
-    public CarrinhoCompraAppService(ICarrinhoCompraRepository carrinhoCompraRepository, ICarrinhoCompraItemRepository carrinhoCompraItemRepository, IItemRepository itemRepository)
+    public CarrinhoCompraAppService(ICarrinhoCompraItemRepository carrinhoCompraItemRepository, IItemRepository itemRepository)
     {
-        _carrinhoCompraRepository = carrinhoCompraRepository;
         _carrinhoCompraItemRepository = carrinhoCompraItemRepository;
         _itemRepository = itemRepository;
     }
 
-    public CarrinhoCompra ObterCarrinhoCompra(string id)
-    {
-        if (string.IsNullOrWhiteSpace(id))
-            return CarrinhoCompra.ObterCarrinhoCompra();
-
-        return _carrinhoCompraRepository.GetById(id) ?? CarrinhoCompra.ObterCarrinhoCompra();
-    }
-
     public void AdicionarAoCarrinhoCompra(CarrinhoCompra carrinhoCompra, int itemId)
     {
-        var ItemSelecionado = _itemRepository.GetById(itemId);
-        var carrinhoCompraItem =
-            _carrinhoCompraItemRepository.GetByCarrinhoCompraELanche(carrinhoCompra, ItemSelecionado);
+        var item = _itemRepository.GetById(itemId);
 
-        if (carrinhoCompraItem is null)
-        {
-            carrinhoCompraItem = new CarrinhoCompraItem(carrinhoCompra.Id, ItemSelecionado);
-            _carrinhoCompraItemRepository.Add(carrinhoCompraItem);
-        }
-        else
-            carrinhoCompraItem.AumentarQuantidade(ItemSelecionado);
-
-        _carrinhoCompraItemRepository.Update(carrinhoCompraItem);
+        if (item is not null)
+            carrinhoCompra.AdicionarItem(item, _carrinhoCompraItemRepository);
     }
 
     public void RemoverDoCarrinho(CarrinhoCompra carrinhoCompra, int itemId)
     {
         var itemSelecionado = _itemRepository.GetById(itemId);
         var itens =
-            _carrinhoCompraItemRepository.GetByCarrinhoCompraELanche(carrinhoCompra, itemSelecionado);
+            _carrinhoCompraItemRepository.GetByCarrinhoCompraEItem(carrinhoCompra, itemSelecionado);
 
         if (itens is not null)
             if (itens.Quantidade > 1)
@@ -61,11 +42,6 @@ public class CarrinhoCompraAppService : ICarrinhoCompraAppService
             }
     }
 
-    public IEnumerable<CarrinhoCompraItem> ObterItensDoCarrinhoDeCompra(CarrinhoCompra carrinhoCompra)
-    {
-        return _carrinhoCompraItemRepository.GetByCarrinhoCompra(carrinhoCompra);
-    }
-
     public void LimparCarrinho(CarrinhoCompra carrinhoCompra)
     {
         var carrinhoCompraItens = _carrinhoCompraItemRepository.GetByCarrinhoCompra(carrinhoCompra);
@@ -77,5 +53,10 @@ public class CarrinhoCompraAppService : ICarrinhoCompraAppService
     public decimal ObterValorTotalDoCarrinho(CarrinhoCompra carrinhoCompra)
     {
         return carrinhoCompra.PrecoTotal();
+    }
+
+    public IEnumerable<CarrinhoCompraItem> ObterItensDoCarrinhoDeCompra(CarrinhoCompra carrinhoCompra)
+    {
+        return _carrinhoCompraItemRepository.GetByCarrinhoCompra(carrinhoCompra);
     }
 }

@@ -26,9 +26,9 @@ public class CarrinhoCompraItemRepository : ICarrinhoCompraItemRepository
         throw new NotImplementedException();
     }
 
-    public CarrinhoCompraItem? GetByCarrinhoCompraELanche(CarrinhoCompra carrinhoCompra, Item lanche)
+    public CarrinhoCompraItem? GetByCarrinhoCompraEItem(CarrinhoCompra carrinhoCompra, Item Item)
     {
-        return _context.CarrinhoCompraItens.SingleOrDefault(s => s.Item.Id == lanche.Id && s.CarrinhoCompraId == carrinhoCompra.Id);
+        return _context.CarrinhoCompraItens.SingleOrDefault(s => s.Item.Id == Item.Id && s.CarrinhoCompraId == carrinhoCompra.Id);
     }
 
     public CarrinhoCompraItem Update(CarrinhoCompraItem carrinhoCompraItem)

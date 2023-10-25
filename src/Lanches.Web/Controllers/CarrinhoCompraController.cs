@@ -11,37 +11,37 @@ namespace Lanches.Web.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ICarrinhoCompraAppService _carrinhoCompraAppService;
         private readonly IItemRepository _itemRepository;
-        private static readonly CarrinhoCompra _carrinhoCompra;
+        private readonly CarrinhoCompra _carrinhoCompra;
 
-        public CarrinhoCompraController(IHttpContextAccessor httpContextAccessor, ICarrinhoCompraAppService carrinhoCompraAppService, IItemRepository itemRepository)
+        public CarrinhoCompraController(IHttpContextAccessor httpContextAccessor,
+            ICarrinhoCompraAppService carrinhoCompraAppService, IItemRepository itemRepository,
+            CarrinhoCompra carrinhoCompra)
         {
             _httpContextAccessor = httpContextAccessor;
             _carrinhoCompraAppService = carrinhoCompraAppService;
             _itemRepository = itemRepository;
+            _carrinhoCompra = carrinhoCompra;
         }
 
         public IActionResult Index()
         {
-            var session = _httpContextAccessor.HttpContext?.Session;
-
-            var carrinhoCompraId = session.GetString("CarrinhoCompraId");
-            var carrinhoCompra = _carrinhoCompraAppService.ObterCarrinhoCompra(carrinhoCompraId);
-
-            session.SetString("CarrinhoCompraId", carrinhoCompra.Id);
-
-            return View(new CarrinhoCompraViewModel() { CarrinhoCompra = carrinhoCompra });
+            return View(new CarrinhoCompraViewModel()
+            {
+                CarrinhoCompra = _carrinhoCompra,
+                CarrinhoCompraTotal = _carrinhoCompra.PrecoTotal()
+            });
         }
 
-        public IActionResult AdicionarItemNoCarrinhoCompra(int lancheId)
+        public IActionResult AdicionarItemNoCarrinhoCompra(int itemId)
         {
-            _carrinhoCompraAppService.AdicionarAoCarrinhoCompra(_carrinhoCompra, lancheId);
+            _carrinhoCompraAppService.AdicionarAoCarrinhoCompra(_carrinhoCompra, itemId);
 
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult RemoverItemDoCarrinhoCompra(int lancheId)
+        public IActionResult RemoverItemDoCarrinhoCompra(int itemId)
         {
-            _carrinhoCompraAppService.RemoverDoCarrinho(_carrinhoCompra, lancheId);
+            _carrinhoCompraAppService.RemoverDoCarrinho(_carrinhoCompra, itemId);
 
             return RedirectToAction(nameof(Index));
         }

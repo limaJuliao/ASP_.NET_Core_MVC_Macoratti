@@ -9,7 +9,7 @@
         public decimal Preco { get; private set; }
         public string? ImagemUrl { get; private set; }
         public string? ImagemThumbnailUrl { get; private set; }
-        public bool IsLanchePreferido { get; private set; }
+        public bool IsItemPreferido { get; private set; }
         public bool EmEstoque { get; private set; }
 
         public int CategoriaId { get; private set; }

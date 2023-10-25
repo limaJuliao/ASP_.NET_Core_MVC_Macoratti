@@ -5,7 +5,6 @@ public class CarrinhoCompraItem : BaseEntity
     public Item Item { get; private set; }
     public int Quantidade { get; private set; }
     public string CarrinhoCompraId { get; private set; }
-    public CarrinhoCompra CarrinhoCompra { get; private set; }
 
     private CarrinhoCompraItem() { }
 
@@ -16,7 +15,7 @@ public class CarrinhoCompraItem : BaseEntity
         Quantidade++;
     }
 
-    public void AumentarQuantidade(Item item)
+    public void AumentarQuantidade()
     {
         Quantidade++;
     }

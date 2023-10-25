@@ -34,4 +34,10 @@ public class ItemController : Controller
 
         return View(new ItemListViewModel { CategoriaAtual = categoriaAtual, Itens = itens});
     }
+
+    public IActionResult Details(int id)
+    {
+        var item = _itemRepository.Itens.FirstOrDefault(x => x.Id == id);
+        return View(item);
+    }
 }

@@ -1,0 +1,19 @@
+﻿@using Lanches.Domain.Entities;
+@model Item
+
+<div class="col-sm-4 col-md-4 col-lg-4">
+    <p><img class="img-fluid" src="@Model.ImagemUrl" /></p>
+    <h3>Preço: @Model.Preco.ToString("c")</h3>
+    <h4>
+        <a asp-controller="Item" asp-action="@nameof(ItemController.Details)" asp-route-id="@Model.Id">@Model.Nome</a>
+    </h4>
+    <p>@Model.DescricaoCurta</p>
+    <div>
+        <p class="button">
+            <a class="btn btn-primary" id="cartButton" asp-controller="CarrinhoCompra" asp-route-itemId="@Model.Id"
+               asp-action="@nameof(CarrinhoCompraController.AdicionarItemNoCarrinhoCompra)">
+                Incluir no Carrinho
+            </a>
+        </p>
+    </div>
+</div>

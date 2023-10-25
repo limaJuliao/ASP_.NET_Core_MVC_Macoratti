@@ -12,11 +12,11 @@ public class ItemRepository : IItemRepository
     {
         _context = context;
     }
-    public IEnumerable<Item> Itens => _context.Lanches.Include(x => x.Categoria);
+    public IEnumerable<Item> Itens => _context.Itens.Include(x => x.Categoria);
 
-    public IEnumerable<Item> ItensPreferidos => _context.Lanches
-        .Where(l => l.IsLanchePreferido)
+    public IEnumerable<Item> ItensPreferidos => _context.Itens
+        .Where(l => l.IsItemPreferido)
         .Include(c=>c.Categoria);
 
-    public Item GetById(int id) => _context.Lanches.FirstOrDefault(x => x.Id == id);
+    public Item? GetById(int id) => _context.Itens.Find(id);
 }

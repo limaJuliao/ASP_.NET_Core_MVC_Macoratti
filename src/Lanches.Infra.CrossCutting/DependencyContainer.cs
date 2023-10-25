@@ -1,5 +1,6 @@
 ﻿using Lanches.Application.Interfaces;
 using Lanches.Application.Services;
+using Lanches.Domain.Entities;
 using Lanches.Domain.Interfaces;
 using Lanches.Infra.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,9 +14,10 @@ public static class DependencyContainer
         services.AddScoped<ICarrinhoCompraAppService, CarrinhoCompraAppService>();
         services.AddScoped<ICategoriaAppService, CategoriaAppService>();
 
+        services.AddScoped(s => CarrinhoCompra.GetCarrinho(s));
+
         services.AddScoped<ICategoriaRepository, CategoriaRepository>();
         services.AddScoped<IItemRepository, ItemRepository>();
-        services.AddScoped<ICarrinhoCompraRepository, CarrinhoCompraRepository>();
         services.AddScoped<ICarrinhoCompraItemRepository, CarrinhoCompraItemRepository>();
     }
 }

@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Lanches.Infra.Data.Mappings;
 
-public class LancheMap : IEntityTypeConfiguration<Item>
+public class ItemMap : IEntityTypeConfiguration<Item>
 {
     public void Configure(EntityTypeBuilder<Item> builder)
     {
         builder.Property(x => x.Id)
-            .HasColumnName("LancheId");
+            .HasColumnName("ItemId");
 
         builder.Property(x => x.Nome)
             .HasMaxLength(80);
@@ -29,7 +29,7 @@ public class LancheMap : IEntityTypeConfiguration<Item>
         builder.Property(x => x.ImagemThumbnailUrl)
             .HasMaxLength(200);
 
-        builder.Property(x => x.IsLanchePreferido);
+        builder.Property(x => x.IsItemPreferido);
         builder.Property(x => x.EmEstoque);
     }
 }

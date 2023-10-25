@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lanches.Infra.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231016215520_RemoveDataNotationsCategoria")]
-    partial class RemoveDataNotationsCategoria
+    [Migration("20231025042012_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,34 @@ namespace Lanches.Infra.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Itens.Domain.Entities.Categoria", b =>
+            modelBuilder.Entity("Lanches.Domain.Entities.CarrinhoCompraItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("CarrinhoCompraItemId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CarrinhoCompraId")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("CarrinhoCompraItens");
+                });
+
+            modelBuilder.Entity("Lanches.Domain.Entities.Categoria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,11 +75,12 @@ namespace Lanches.Infra.Data.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("Itens.Domain.Entities.Item", b =>
+            modelBuilder.Entity("Lanches.Domain.Entities.Item", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ItemId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -80,7 +108,7 @@ namespace Lanches.Infra.Data.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<bool>("IsLanchePreferido")
+                    b.Property<bool>("IsItemPreferido")
                         .HasColumnType("bit");
 
                     b.Property<string>("Nome")
@@ -98,9 +126,20 @@ namespace Lanches.Infra.Data.Migrations
                     b.ToTable("Itens");
                 });
 
-            modelBuilder.Entity("Itens.Domain.Entities.Item", b =>
+            modelBuilder.Entity("Lanches.Domain.Entities.CarrinhoCompraItem", b =>
                 {
-                    b.HasOne("Itens.Domain.Entities.Categoria", "Categoria")
+                    b.HasOne("Lanches.Domain.Entities.Item", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Item");
+                });
+
+            modelBuilder.Entity("Lanches.Domain.Entities.Item", b =>
+                {
+                    b.HasOne("Lanches.Domain.Entities.Categoria", "Categoria")
                         .WithMany("Itens")
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -109,7 +148,7 @@ namespace Lanches.Infra.Data.Migrations
                     b.Navigation("Categoria");
                 });
 
-            modelBuilder.Entity("Itens.Domain.Entities.Categoria", b =>
+            modelBuilder.Entity("Lanches.Domain.Entities.Categoria", b =>
                 {
                     b.Navigation("Itens");
                 });
