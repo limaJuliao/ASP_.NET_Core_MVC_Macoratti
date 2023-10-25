@@ -5,51 +5,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Lanches.Infra.Data.Repositories;
 
-public class CarrinhoCompraItemRepository : ICarrinhoCompraItemRepository
+public class CarrinhoCompraItemRepository : EFCoreRepository<CarrinhoCompraItem>, ICarrinhoCompraItemRepository
 {
     private readonly AppDbContext _context;
 
-    public CarrinhoCompraItemRepository(AppDbContext context)
+    public CarrinhoCompraItemRepository(AppDbContext context):base(context)
     {
         _context = context;
     }
 
-    public CarrinhoCompraItem Add(CarrinhoCompraItem entity)
-    {
-        _context.CarrinhoCompraItens.Add(entity);
-        _context.SaveChanges();
-        return entity;
-    }
-
-    public CarrinhoCompraItem GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
     public CarrinhoCompraItem? GetByCarrinhoCompraEItem(CarrinhoCompra carrinhoCompra, Item Item)
     {
-        return _context.CarrinhoCompraItens.SingleOrDefault(s => s.Item.Id == Item.Id && s.CarrinhoCompraId == carrinhoCompra.Id);
-    }
-
-    public CarrinhoCompraItem Update(CarrinhoCompraItem carrinhoCompraItem)
-    {
-        _context.Entry(carrinhoCompraItem).State = EntityState.Modified;
-        _context.SaveChanges();
-
-        return carrinhoCompraItem;
-    }
-
-    public CarrinhoCompraItem Delete(CarrinhoCompraItem entity)
-    {
-        _context.Remove(entity);
-        _context.SaveChanges();
-
-        return entity;
+        return _context.CarrinhoCompraItem.SingleOrDefault(s => s.Item.Id == Item.Id && s.CarrinhoCompraId == carrinhoCompra.Id);
     }
 
     public IEnumerable<CarrinhoCompraItem> GetByCarrinhoCompra(CarrinhoCompra carrinhoCompra)
     {
-        return _context.CarrinhoCompraItens
+        return _context.CarrinhoCompraItem
             .Where(c => c.CarrinhoCompraId == carrinhoCompra.Id)
             .Include(s => s.Item);
     }

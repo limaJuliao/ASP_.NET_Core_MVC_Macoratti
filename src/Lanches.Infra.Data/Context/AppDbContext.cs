@@ -9,7 +9,9 @@ public class AppDbContext : DbContext
 
     public DbSet<Categoria> Categorias { get; set; }
     public DbSet<Item> Itens { get; set; }
-    public DbSet<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
+    public DbSet<CarrinhoCompraItem> CarrinhoCompraItem { get; set; }
+    public DbSet<Pedido> Pedidos { get; set; }
+    public DbSet<PedidoDetalhe> PedidoDetalhe { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

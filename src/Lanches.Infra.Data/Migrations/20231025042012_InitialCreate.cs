@@ -52,7 +52,7 @@ namespace Lanches.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CarrinhoCompraItens",
+                name: "CarrinhoCompraItem",
                 columns: table => new
                 {
                     CarrinhoCompraItemId = table.Column<int>(type: "int", nullable: false)
@@ -74,7 +74,7 @@ namespace Lanches.Infra.Data.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_CarrinhoCompraItens_ItemId",
-                table: "CarrinhoCompraItens",
+                table: "CarrinhoCompraItem",
                 column: "ItemId");
 
             migrationBuilder.CreateIndex(
@@ -87,7 +87,7 @@ namespace Lanches.Infra.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CarrinhoCompraItens");
+                name: "CarrinhoCompraItem");
 
             migrationBuilder.DropTable(
                 name: "Itens");

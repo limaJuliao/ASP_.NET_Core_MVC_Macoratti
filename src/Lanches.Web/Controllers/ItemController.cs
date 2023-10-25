@@ -20,12 +20,12 @@ public class ItemController : Controller
 
         if (string.IsNullOrEmpty(categoria))
         {
-            itens = _itemRepository.Itens.OrderBy(x => x.Id);
+            itens = _itemRepository.GetAll().OrderBy(x => x.Id);
             categoriaAtual = "Todos os Itens";
         }
         else
         {
-            itens = _itemRepository.Itens
+            itens = _itemRepository.GetAll()
                 .Where(x => x.Categoria.Nome.Equals(categoria))
                 .OrderBy(x => x.Nome);
 
@@ -37,7 +37,7 @@ public class ItemController : Controller
 
     public IActionResult Details(int id)
     {
-        var item = _itemRepository.Itens.FirstOrDefault(x => x.Id == id);
+        var item = _itemRepository.GetAll().FirstOrDefault(x => x.Id == id);
         return View(item);
     }
 }

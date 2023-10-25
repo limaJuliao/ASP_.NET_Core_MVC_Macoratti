@@ -1,9 +1,7 @@
 ﻿using Lanches.Domain.Entities;
 
-namespace Lanches.Domain.Interfaces
+namespace Lanches.Domain.Interfaces;
+
+public interface ICategoriaRepository : IBaseRepository<Categoria>
 {
-    public interface ICategoriaRepository
-    {
-        public IEnumerable<Categoria> Categorias { get; }
-    }
 }

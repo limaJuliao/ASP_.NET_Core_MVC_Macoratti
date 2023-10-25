@@ -2,9 +2,7 @@
 
 namespace Lanches.Domain.Interfaces;
 
-public interface IItemRepository
+public interface IItemRepository: IBaseRepository<Item>
 {
-    IEnumerable<Item> Itens { get; }
-    IEnumerable<Item> ItensPreferidos { get; }
-    Item GetById(int id);
+    IEnumerable<Item> ItensPreferidos();
 }

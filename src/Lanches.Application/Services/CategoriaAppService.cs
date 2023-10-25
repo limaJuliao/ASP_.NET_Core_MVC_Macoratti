@@ -15,6 +15,6 @@ public class CategoriaAppService : ICategoriaAppService
 
     public IEnumerable<Categoria> ObterCategoriasOrdenadasPorNome()
     {
-        return _categoriaRepository.Categorias.OrderBy(c => c.Nome);
+        return _categoriaRepository.GetAll().OrderBy(c => c.Nome);
     }
 }

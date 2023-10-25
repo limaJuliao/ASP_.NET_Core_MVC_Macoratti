@@ -5,18 +5,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Lanches.Infra.Data.Repositories;
 
-public class ItemRepository : IItemRepository
+public class ItemRepository : EFCoreRepository<Item>, IItemRepository
 {
     private readonly AppDbContext _context;
-    public ItemRepository(AppDbContext context)
+    public ItemRepository(AppDbContext context) : base(context)
     {
         _context = context;
     }
-    public IEnumerable<Item> Itens => _context.Itens.Include(x => x.Categoria);
-
-    public IEnumerable<Item> ItensPreferidos => _context.Itens
-        .Where(l => l.IsItemPreferido)
-        .Include(c=>c.Categoria);
-
-    public Item? GetById(int id) => _context.Itens.Find(id);
+    public IEnumerable<Item> ItensPreferidos()
+    {
+        return _context.Itens
+            .Where(l => l.IsItemPreferido)
+            .Include(c => c.Categoria);
+    }
 }

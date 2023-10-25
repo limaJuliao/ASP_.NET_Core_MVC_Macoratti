@@ -8,6 +8,8 @@ public class CategoriaMap : IEntityTypeConfiguration<Categoria>
 {
     public void Configure(EntityTypeBuilder<Categoria> builder)
     {
+        builder.ToTable("Categorias");
+
         builder.Property(x => x.Id)
             .HasColumnName("CategoriaId");
 

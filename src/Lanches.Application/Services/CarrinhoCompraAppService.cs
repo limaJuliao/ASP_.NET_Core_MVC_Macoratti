@@ -50,11 +50,6 @@ public class CarrinhoCompraAppService : ICarrinhoCompraAppService
             _carrinhoCompraItemRepository.DeleteEmLote(carrinhoCompraItens);
     }
 
-    public decimal ObterValorTotalDoCarrinho(CarrinhoCompra carrinhoCompra)
-    {
-        return carrinhoCompra.PrecoTotal();
-    }
-
     public IEnumerable<CarrinhoCompraItem> ObterItensDoCarrinhoDeCompra(CarrinhoCompra carrinhoCompra)
     {
         return _carrinhoCompraItemRepository.GetByCarrinhoCompra(carrinhoCompra);

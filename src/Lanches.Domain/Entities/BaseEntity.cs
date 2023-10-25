@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace Lanches.Domain.Entities
+namespace Lanches.Domain.Entities;
+
+public abstract class BaseEntity
 {
-    public abstract class BaseEntity
-    {
-        [Key]
-        public int Id { get; private set; }
-    }
+    [Key]
+    public int Id { get; private set; }
 }

@@ -4,12 +4,11 @@ using Lanches.Infra.Data.Context;
 
 namespace Lanches.Infra.Data.Repositories;
 
-public class CategoriaRepository : ICategoriaRepository
+public class CategoriaRepository : EFCoreRepository<Categoria>, ICategoriaRepository
 {
     private readonly AppDbContext _context;
-    public CategoriaRepository(AppDbContext context)
+    public CategoriaRepository(AppDbContext context) : base(context)
     {
         _context = context;
     }
-    public IEnumerable<Categoria> Categorias => _context.Categorias;
 }

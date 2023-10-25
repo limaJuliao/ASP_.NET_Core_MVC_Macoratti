@@ -6,6 +6,5 @@ public interface ICarrinhoCompraItemRepository : IBaseRepository<CarrinhoCompraI
 {
     IEnumerable<CarrinhoCompraItem> GetByCarrinhoCompra(CarrinhoCompra carrinhoCompra);
     CarrinhoCompraItem? GetByCarrinhoCompraEItem(CarrinhoCompra carrinhoCompra, Item Item);
-    CarrinhoCompraItem Update(CarrinhoCompraItem carrinhoCompraItem);
     void DeleteEmLote(IEnumerable<CarrinhoCompraItem> carrinhoCompraItens);
 }

@@ -48,7 +48,7 @@ namespace Lanches.Infra.Data.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("CarrinhoCompraItens");
+                    b.ToTable("CarrinhoCompraItem");
                 });
 
             modelBuilder.Entity("Lanches.Domain.Entities.Categoria", b =>

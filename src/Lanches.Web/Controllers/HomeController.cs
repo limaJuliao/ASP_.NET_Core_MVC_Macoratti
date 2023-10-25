@@ -19,7 +19,7 @@ namespace Lanches.Web.Controllers
         {
             return View(new HomeViewModel
             {
-                ItensPreferidos = _itemRepository.ItensPreferidos
+                ItensPreferidos = _itemRepository.ItensPreferidos()
             });
         }
 
