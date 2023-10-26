@@ -1,11 +1,13 @@
-﻿using Lanches.Domain.Entities;
+﻿using Lanches.Application.ViewModels;
+using Lanches.Domain.Entities;
 
 namespace Lanches.Application.Interfaces;
 
 public interface ICarrinhoCompraAppService
 {
-    void AdicionarAoCarrinhoCompra(CarrinhoCompra carrinhoCompra, int itemId);
-    void RemoverDoCarrinho(CarrinhoCompra carrinhoCompra, int itemId);
-    IEnumerable<CarrinhoCompraItem> ObterItensDoCarrinhoDeCompra(CarrinhoCompra carrinhoCompra);
-    void LimparCarrinho(CarrinhoCompra carrinhoCompra);
+    CarrinhoCompraViewModel ObterCarrinhoDeCompras();
+    void AdicionarAoCarrinhoCompra(int itemId);
+    void RemoverDoCarrinho(int itemId);
+    IEnumerable<CarrinhoCompraItem> ObterItensDoCarrinhoDeCompras();
+    void LimparCarrinho();
 }

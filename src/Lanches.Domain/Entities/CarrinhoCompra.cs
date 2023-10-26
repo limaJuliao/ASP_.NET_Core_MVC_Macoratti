@@ -15,7 +15,7 @@ public class CarrinhoCompra
     public CarrinhoCompra(string id, ICarrinhoCompraItemRepository carrinhoCompraItemRepository)
     {
         Id = id;
-        CarrinhoCompraItens = carrinhoCompraItemRepository.GetByCarrinhoCompra(this).ToList();
+        CarrinhoCompraItens = carrinhoCompraItemRepository.GetByCarrinhoCompra(Id).ToList();
     }
 
     public decimal PrecoTotal()
@@ -33,7 +33,7 @@ public class CarrinhoCompra
     }
     public void AdicionarItem(Item item, ICarrinhoCompraItemRepository carrinhoCompraItemRepository)
     {
-        var itemExistente = carrinhoCompraItemRepository.GetByCarrinhoCompraEItem(this, item);
+        var itemExistente = carrinhoCompraItemRepository.GetByCarrinhoCompraIdEItemId(Id, item.Id);
 
         if (itemExistente == null)
             carrinhoCompraItemRepository.Add(new CarrinhoCompraItem(Id, item));

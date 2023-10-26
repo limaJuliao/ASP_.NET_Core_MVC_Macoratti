@@ -18,7 +18,7 @@ public class CarrinhoCompraResumo : ViewComponent
 
     public IViewComponentResult Invoke()
     {
-        var itens = _carrinhoCompraAppService.ObterItensDoCarrinhoDeCompra(_carrinhoCompra);
+        var itens = _carrinhoCompraAppService.ObterItensDoCarrinhoDeCompras();
 
         foreach (var item in itens)
             _carrinhoCompra.CarrinhoCompraItens.Add(item);

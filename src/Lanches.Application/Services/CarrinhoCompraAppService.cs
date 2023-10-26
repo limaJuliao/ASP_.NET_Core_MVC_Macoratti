@@ -1,4 +1,5 @@
 ﻿using Lanches.Application.Interfaces;
+using Lanches.Application.ViewModels;
 using Lanches.Domain.Entities;
 using Lanches.Domain.Interfaces;
 
@@ -8,50 +9,56 @@ public class CarrinhoCompraAppService : ICarrinhoCompraAppService
 {
     private readonly ICarrinhoCompraItemRepository _carrinhoCompraItemRepository;
     private readonly IItemRepository _itemRepository;
+    private readonly CarrinhoCompra _carrinhoCompra;
 
-    public CarrinhoCompraAppService(ICarrinhoCompraItemRepository carrinhoCompraItemRepository, IItemRepository itemRepository)
+    public CarrinhoCompraAppService(ICarrinhoCompraItemRepository carrinhoCompraItemRepository, IItemRepository itemRepository,
+        CarrinhoCompra carrinhoCompra)
     {
         _carrinhoCompraItemRepository = carrinhoCompraItemRepository;
         _itemRepository = itemRepository;
+        _carrinhoCompra = carrinhoCompra;
     }
 
-    public void AdicionarAoCarrinhoCompra(CarrinhoCompra carrinhoCompra, int itemId)
+    public void AdicionarAoCarrinhoCompra(int itemId)
     {
         var item = _itemRepository.GetById(itemId);
 
         if (item is not null)
-            carrinhoCompra.AdicionarItem(item, _carrinhoCompraItemRepository);
+            _carrinhoCompra.AdicionarItem(item, _carrinhoCompraItemRepository);
     }
 
-    public void RemoverDoCarrinho(CarrinhoCompra carrinhoCompra, int itemId)
+    public void RemoverDoCarrinho(int itemId)
     {
-        var itemSelecionado = _itemRepository.GetById(itemId);
-        var itens =
-            _carrinhoCompraItemRepository.GetByCarrinhoCompraEItem(carrinhoCompra, itemSelecionado);
+        var item = _carrinhoCompraItemRepository.GetByCarrinhoCompraIdEItemId(_carrinhoCompra.Id, itemId);
 
-        if (itens is not null)
-            if (itens.Quantidade > 1)
+        if (item is not null)
+            if (item.Quantidade > 1)
             {
-                itens.DiminuirQuantidade();
+                item.DiminuirQuantidade();
 
-                _carrinhoCompraItemRepository.Update(itens);
+                _carrinhoCompraItemRepository.Update(item);
             }
             else
             {
-                _carrinhoCompraItemRepository.Delete(itens);
+                _carrinhoCompraItemRepository.Delete(item);
             }
     }
 
-    public void LimparCarrinho(CarrinhoCompra carrinhoCompra)
+    public void LimparCarrinho()
     {
-        var carrinhoCompraItens = _carrinhoCompraItemRepository.GetByCarrinhoCompra(carrinhoCompra);
+        var carrinhoCompraItens = _carrinhoCompraItemRepository.GetByCarrinhoCompra(_carrinhoCompra.Id);
 
         if (carrinhoCompraItens.Any())
             _carrinhoCompraItemRepository.DeleteEmLote(carrinhoCompraItens);
     }
 
-    public IEnumerable<CarrinhoCompraItem> ObterItensDoCarrinhoDeCompra(CarrinhoCompra carrinhoCompra)
+    public IEnumerable<CarrinhoCompraItem> ObterItensDoCarrinhoDeCompras()
     {
-        return _carrinhoCompraItemRepository.GetByCarrinhoCompra(carrinhoCompra);
+        return _carrinhoCompraItemRepository.GetByCarrinhoCompra(_carrinhoCompra.Id);
+    }
+
+    public CarrinhoCompraViewModel ObterCarrinhoDeCompras()
+    {
+        return new CarrinhoCompraViewModel { CarrinhoCompra = _carrinhoCompra };
     }
 }

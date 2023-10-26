@@ -1,8 +1,8 @@
-﻿using Lanches.Domain.Entities;
+﻿using Lanches.Application.ViewModels;
 
 namespace Lanches.Application.Interfaces;
 
 public interface ICategoriaAppService
 {
-    IEnumerable<Categoria> ObterCategoriasOrdenadasPorNome();
+    CategoriaViewModel ObterCategoriasOrdenadasPorNome();
 }

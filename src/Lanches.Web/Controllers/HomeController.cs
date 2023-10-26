@@ -17,10 +17,7 @@ namespace Lanches.Web.Controllers
 
         public IActionResult Index()
         {
-            return View(new HomeViewModel
-            {
-                ItensPreferidos = _itemRepository.ItensPreferidos()
-            });
+            return View(new HomeViewModel { ItensPreferidos = _itemRepository.GetPreferidos() });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

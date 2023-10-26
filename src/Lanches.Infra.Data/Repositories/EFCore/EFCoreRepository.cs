@@ -3,7 +3,7 @@ using Lanches.Domain.Interfaces;
 using Lanches.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Lanches.Infra.Data.Repositories;
+namespace Lanches.Infra.Data.Repositories.EFCore;
 
 public abstract class EFCoreRepository<TEntity> : IBaseRepository<TEntity>
     where TEntity : BaseEntity

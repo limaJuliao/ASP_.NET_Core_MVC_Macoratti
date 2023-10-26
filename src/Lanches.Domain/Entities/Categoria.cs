@@ -2,9 +2,16 @@
 {
     public class Categoria : BaseEntity
     {
-        private Categoria() { }
         public string Nome { get; private set; }
+
+        public Categoria(string nome)
+        {
+            Nome = nome;
+        }
+
         public string Descricao { get; private set; }
+
+        private Categoria() { }
 
         public List<Item> Itens { get; private set; }
     }

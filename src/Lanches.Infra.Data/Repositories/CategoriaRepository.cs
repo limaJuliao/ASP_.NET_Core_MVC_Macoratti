@@ -1,6 +1,7 @@
 ﻿using Lanches.Domain.Entities;
 using Lanches.Domain.Interfaces;
 using Lanches.Infra.Data.Context;
+using Lanches.Infra.Data.Repositories.EFCore;
 
 namespace Lanches.Infra.Data.Repositories;
 

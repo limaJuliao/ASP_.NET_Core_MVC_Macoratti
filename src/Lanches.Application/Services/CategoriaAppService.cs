@@ -1,4 +1,5 @@
 ﻿using Lanches.Application.Interfaces;
+using Lanches.Application.ViewModels;
 using Lanches.Domain.Entities;
 using Lanches.Domain.Interfaces;
 
@@ -13,8 +14,8 @@ public class CategoriaAppService : ICategoriaAppService
         _categoriaRepository = cateuriaRepository;
     }
 
-    public IEnumerable<Categoria> ObterCategoriasOrdenadasPorNome()
+    public CategoriaViewModel ObterCategoriasOrdenadasPorNome()
     {
-        return _categoriaRepository.GetAll().OrderBy(c => c.Nome);
+        return new() { Categorias = _categoriaRepository.GetAll().OrderBy(c => c.Nome) };
     }
 }

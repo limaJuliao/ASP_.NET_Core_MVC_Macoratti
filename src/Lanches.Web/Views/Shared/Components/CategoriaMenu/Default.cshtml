@@ -4,10 +4,10 @@
        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> Itens </a>
 
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        @foreach (var categoria in Model)
+        @foreach (var categoria in Model.Categorias)
         {
             <li>
-                <a class="dropdown-item teste" asp-controller="Item" asp-action="List" asp-route-categoria="@categoria.Nome"
+                <a class="dropdown-item teste" asp-controller="Item" asp-action="List" asp-route-categoriaId="@categoria.Id"
                    style="color:black">
                     @categoria.Nome
                 </a>

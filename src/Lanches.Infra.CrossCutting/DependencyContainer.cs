@@ -13,6 +13,7 @@ public static class DependencyContainer
     {
         services.AddScoped<ICarrinhoCompraAppService, CarrinhoCompraAppService>();
         services.AddScoped<ICategoriaAppService, CategoriaAppService>();
+        services.AddScoped<IItemAppService, ItemAppService>();
 
         services.AddScoped(s => CarrinhoCompra.GetCarrinho(s));
 
